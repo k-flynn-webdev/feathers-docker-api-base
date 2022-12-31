@@ -6,7 +6,7 @@ services:
     image: node-app
     container_name: node-app-dev
     ports:
-      - '${port}:${port}'
+      - '${PORT}:${PORT}'
     depends_on:
       - database-layer
     volumes:
