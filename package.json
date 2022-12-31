@@ -32,10 +32,10 @@
     "lib/client.js",
     "lib/**/*.d.ts"
   ],
-  "main": "src/client",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src",
+    "start": "node src/index.js",
     "dev": "nodemon src/",
     "prettier": "npx prettier \"**/*.js\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",

@@ -1,15 +1,12 @@
 version: '3'
 
 services:
-  app-noode:
+  node-app:
     build: .
     image: node-app
-    container_name: app-node
-#    environment:
-#      - PORT=4000
-#      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    container_name: node-app-dev
     ports:
-      - '${APP_PORT}:${APP_PORT}'
+      - '${port}:${port}'
     depends_on:
       - database-layer
     volumes:
@@ -22,13 +19,13 @@ services:
     image: postgres:12-alpine
     container_name: database-layer
     environment:
-#        - DB_POSTGRES=true
-#        - PGPORT=${DB_PORT}
-#        - POSTGRES_USER=${DB_USER}
+        - DB_POSTGRES=true
+        - PGPORT=${DB_PORT}
+        - POSTGRES_USER=${DB_USER}
         - POSTGRES_PASSWORD=password
-#        - POSTGRES_DB=${DB_NAME}
-#    ports:
-#      - "${DB_PORT}:${DB_PORT}"
+        - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
     networks:
       - shared-network
     volumes:
