@@ -40,7 +40,7 @@ export const userDataResolver = resolve({
 })
 
 // Schema for updating existing users
-export const userDataSchema = {
+export const userPatchSchema = {
   $id: 'UserPatch',
   type: 'object',
   additionalProperties: false,
