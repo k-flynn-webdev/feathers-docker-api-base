@@ -22,7 +22,7 @@ services:
         - DB_POSTGRES=true
         - PGPORT=${DB_PORT}
         - POSTGRES_USER=${DB_USER}
-        - POSTGRES_PASSWORD=password
+        - POSTGRES_PASSWORD=${DB_PASSWORD}
         - POSTGRES_DB=${DB_NAME}
     ports:
       - "${DB_PORT}:${DB_PORT}"
@@ -31,6 +31,18 @@ services:
     volumes:
       - database-volume:/var/lib/postgresql/data
     restart: on-failure
+
+  admin:
+    image: adminer
+    restart: on-failure
+    depends_on:
+      - database-layer
+    ports:
+      - 8080:8080
+    networks:
+      - shared-network
+#   Link:
+#   http://0.0.0.0:8080/?pgsql=database-layer%3A2665&username=dbuser&db=dbname&ns=public
 
 volumes:
   database-volume:
