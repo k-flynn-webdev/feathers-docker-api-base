@@ -6,7 +6,7 @@ import socketio from '@feathersjs/socketio'
 import { configurationValidator } from './configuration.js'
 import { logError } from './hooks/log-error.js'
 import { postgresql } from './postgresql.js'
-import { envHostPort } from './envHostPort.js'
+// import { envHostPort } from './envHostPort.js'
 
 import { authentication } from './authentication.js'
 
@@ -26,7 +26,7 @@ app.use(parseAuthentication())
 app.use(bodyParser())
 
 // Configure services and transports
-app.configure(envHostPort)
+// app.configure(envHostPort)
 app.configure(rest())
 app.configure(
   socketio({
