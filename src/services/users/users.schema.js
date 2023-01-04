@@ -8,13 +8,14 @@ export const userSchema = {
   $id: 'User',
   type: 'object',
   additionalProperties: false,
-  required: ['id', 'email'],
+  required: ['id'],
   properties: {
     id: {
       type: 'number'
     },
-    email: { type: 'string' },
-    password: { type: 'string' }
+    email: { type: "string", "nullable": true },
+    password: { type: "string" },
+    githubId: { type: "number", "nullable": true }
   }
 }
 export const userResolver = resolve({})

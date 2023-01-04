@@ -1,9 +1,9 @@
 {
   "host": "localhost",
-  "port": 3000,
+  "port": 3019,
   "public": "./public/",
   "origins": [
-    "http://localhost:3030"
+    "http://localhost:3019"
   ],
   "paginate": {
     "default": 10,
@@ -32,6 +32,14 @@
     "local": {
       "usernameField": "email",
       "passwordField": "password"
+    },
+    "oauth": {
+      "github": {
+        "redirect_uri": "http://localhost:3019/oauth/github/callback",
+        "key": "088c14be9afa93ba5131",
+        "secret": "a79d0186b3784a37fb53276eb6aaba266fb18626"
+      }
     }
   }
 }
+
