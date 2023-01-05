@@ -35,9 +35,9 @@
     },
     "oauth": {
       "github": {
-        "redirect_uri": "http://localhost:3019/oauth/github/callback",
-        "key": "088c14be9afa93ba5131",
-        "secret": "a79d0186b3784a37fb53276eb6aaba266fb18626"
+        "redirect_uri": "http://host:port/oauth/github/callback",
+        "key": "shortkeycode",
+        "secret": "longsecretcodehere"
       }
     }
   }
