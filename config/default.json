@@ -37,7 +37,9 @@
       "github": {
         "redirect_uri": "http://host:port/oauth/github/callback",
         "key": "shortkeycode",
-        "secret": "longsecretcodehere"
+        "secret": "longsecretcodehere",
+        "scope": ["openid"],
+        "nonce": true
       }
     }
   }

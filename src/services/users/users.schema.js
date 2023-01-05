@@ -13,6 +13,7 @@ export const userSchema = {
     id: {
       type: 'number'
     },
+    name: { type: "string", "nullable": true },
     email: { type: "string", "nullable": true },
     password: { type: "string" },
     githubId: { type: "number", "nullable": true }
