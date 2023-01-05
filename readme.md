@@ -39,3 +39,10 @@ $ npx feathers generate service               # Generate a new Service
 ## Help
 
 For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+
+### TODO
+- add: https://feathers-a-m.netlify.app/overview.html  (account management)
+   - will give local strategy email verify etc, dont re-invent the wheel
+- add: https://feathers-pinia.pages.dev/guide/service-stores.html
+   - local store that interacts with API via Vue Pinia
+
