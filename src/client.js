@@ -1,6 +1,7 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/client.html
 import { feathers } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
+
 const userServiceMethods = ['find', 'get', 'create', 'update', 'patch', 'remove']
 
 /**

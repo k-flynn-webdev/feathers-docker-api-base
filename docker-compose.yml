@@ -16,6 +16,7 @@ services:
     networks:
       - shared-network
     restart: on-failure
+    command: yarn start -L
 
   database-layer:
     image: postgres:12-alpine
