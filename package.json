@@ -43,7 +43,8 @@
     "bundle:client": "npm pack --pack-destination ./public",
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
-    "docker": "docker-compose -f docker-compose.yml up"
+    "docker": "docker-compose -f docker-compose.yml up",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"
   },
   "dependencies": {
     "@feathersjs/adapter-commons": "^5.0.0-pre.34",
