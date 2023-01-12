@@ -22,9 +22,9 @@ class GitHubStrategy extends OAuthStrategy {
 export const authentication = (app) => {
   const authenticationInstance = new AuthenticationService(app)
 
-  authentication.register('jwt', new JWTStrategy())
-  authentication.register('local', new LocalStrategy())
-  authentication.register('github', new GitHubStrategy())
+  authenticationInstance.register('jwt', new JWTStrategy())
+  authenticationInstance.register('local', new LocalStrategy())
+  authenticationInstance.register('github', new GitHubStrategy())
 
   app.use('authentication', authenticationInstance)
   app.configure(oauth())
