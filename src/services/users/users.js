@@ -1,7 +1,8 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
 import { authenticate } from '@feathersjs/authentication'
-
 import { hooks as schemaHooks } from '@feathersjs/schema'
+import { addApiPrefix } from '../../helpers/add-api-prefix.js'
+
 import {
   userDataValidator,
   userPatchValidator,
@@ -19,15 +20,16 @@ export * from './users.schema.js'
 
 // A configure function that registers the service and its hooks via `app.configure`
 export const user = (app) => {
+  const servicePath = addApiPrefix(app, 'users')
   // Register our service on the Feathers application
-  app.use('users', new UserService(getOptions(app)), {
+  app.use(servicePath, new UserService(getOptions(app)), {
     // A list of all methods this service exposes externally
     methods: ['find', 'get', 'create', 'patch', 'remove'],
     // You can add additional custom events to be sent to clients here
     events: []
   })
   // Initialize hooks
-  app.service('users').hooks({
+  app.service(servicePath).hooks({
     around: {
       all: [schemaHooks.resolveExternal(userExternalResolver), schemaHooks.resolveResult(userResolver)],
       find: [authenticate('jwt')],

@@ -15,7 +15,7 @@
   },
   "authentication": {
     "entity": "user",
-    "service": "users",
+    "service": "/api/users",
     "secret": "JLYOLFtQOFFbPCtNLYfRhHLSIq/MCOBG",
     "authStrategies": [
       "jwt",
