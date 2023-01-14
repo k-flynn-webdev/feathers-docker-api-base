@@ -1,23 +1,6 @@
 version: '3'
 
 services:
-  node-app:
-    build: .
-    image: node-app
-    container_name: node-app-dev
-    ports:
-      - '${PORT}:${PORT}'
-    environment:
-      - NODE_CONFIG={"host":"${HOST}","port":${PORT},"authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${PORT}/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
-    depends_on:
-      - database-layer
-    volumes:
-      - .:/usr/src/node-app
-    networks:
-      - shared-network
-    restart: on-failure
-    command: yarn start -L
-
   database-layer:
     image: postgres:12-alpine
     container_name: database-layer
@@ -34,6 +17,34 @@ services:
     volumes:
       - database-volume:/var/lib/postgresql/data
     restart: on-failure
+
+  node-app:
+    build: .
+    image: node-app
+    ports:
+      - '${PORT}:${PORT}'
+    environment:
+      - NODE_CONFIG={"host":"${HOST}","port":${PORT},"authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${PORT}/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
+    depends_on:
+      - database-layer
+    volumes:
+      - .:/usr/src/node-app
+    networks:
+      - shared-network
+    restart: on-failure
+    command: yarn start -L
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+    depends_on:
+      - node-app
+    volumes:
+      - "./public:/usr/src/node-app/public"
+      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
+    networks:
+      - shared-network
 
   admin:
     image: adminer
