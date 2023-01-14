@@ -1,9 +1,9 @@
 {
   "host": "localhost",
-  "port": 3019,
+  "port": 3000,
   "public": "./public/",
   "origins": [
-    "http://localhost:3019"
+    "http://host:port"
   ],
   "paginate": {
     "default": 10,
@@ -11,7 +11,7 @@
   },
   "postgresql": {
     "client": "pg",
-    "connection": "postgres://postgres:@localhost:5432/app-short-cal-api"
+    "connection": "postgres://user:password@host:port/app-short-cal-api"
   },
   "authentication": {
     "entity": "user",
