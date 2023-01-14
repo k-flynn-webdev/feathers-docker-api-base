@@ -6,12 +6,12 @@ services:
     container_name: database-layer
     environment:
         - DB_POSTGRES=true
-        - PGPORT=${DB_PORT}
+        - PGPORT=5432
         - POSTGRES_USER=${DB_USER}
         - POSTGRES_PASSWORD=${DB_PASSWORD}
         - POSTGRES_DB=${DB_NAME}
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      - "${DB_PORT}:5432"
     networks:
       - shared-network
     volumes:
@@ -22,9 +22,9 @@ services:
     build: .
     image: node-app
     ports:
-      - '${PORT}:${PORT}'
+      - '${APP_PORT}:3000'
     environment:
-      - NODE_CONFIG={"host":"${HOST}","port":${PORT},"authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${PORT}/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
+      - NODE_CONFIG={"host":"${HOST}","authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${APP_PORT}/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
     depends_on:
       - database-layer
     volumes:
@@ -37,7 +37,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - '80:80'
+      - '${NGINX_PORT}:80'
     depends_on:
       - node-app
     volumes:
@@ -52,7 +52,7 @@ services:
     depends_on:
       - database-layer
     ports:
-      - 8080:8080
+      - '${ADMIN_PORT}:8080'
     networks:
       - shared-network
 #   Link:
