@@ -24,7 +24,7 @@ services:
     ports:
       - '${APP_PORT}:3000'
     environment:
-      - NODE_CONFIG={"host":"${HOST}","authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${APP_PORT}/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
+      - NODE_CONFIG={"host":"${HOST}","authentication":{"oauth":{"github":{"redirect_uri":"http://${HOST}:${APP_PORT}/api/oauth/github/callback","key":"${GITHUB_KEY}","secret":"${GITHUB_SECRET}"}}},"postgresql":{"client":"pg","connection":"postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"}}
     depends_on:
       - database-layer
     volumes:
