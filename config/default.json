@@ -3,7 +3,7 @@
   "port": 3000,
   "public": "./public/",
   "origins": [
-    "http://host:port"
+    "http://localhost:3000"
   ],
   "paginate": {
     "default": 10,
@@ -34,6 +34,9 @@
       "passwordField": "password"
     },
     "oauth": {
+      "defaults": {
+        "prefix": "/api/oauth"
+      },
       "github": {
         "redirect_uri": "http://host:port/oauth/github/callback",
         "key": "shortkeycode",
