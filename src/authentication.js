@@ -17,17 +17,6 @@ class GitHubStrategy extends OAuthStrategy {
 
     return userData
   }
-
-  async authenticate(authentication, originalParams) {
-    const { entity } = this.configuration
-    const { provider, ...params } = originalParams
-    console.log(provider, params)
-    const profile = await this.getProfile(authentication, params)
-
-    const result = await super.authenticate(authentication, originalParams)
-
-    return result
-  }
 }
 
 export const authentication = (app) => {
