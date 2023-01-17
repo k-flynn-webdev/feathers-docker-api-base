@@ -41,6 +41,13 @@
         "secret": "longsecretcodehere",
         "scope": ["openid"],
         "nonce": true
+      },
+      "google": {
+        "redirect_uri": "http://host:port/oauth/google/callback",
+        "key": "shortkeycode",
+        "secret": "longsecretcodehere",
+        "scope": ["openid", "email"],
+        "nonce": true
       }
     }
   }
