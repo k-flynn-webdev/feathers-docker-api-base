@@ -2,9 +2,6 @@
   "host": "localhost",
   "port": 3000,
   "public": "./public/",
-  "origins": [
-    "http://localhost:3000"
-  ],
   "paginate": {
     "default": 10,
     "max": 50
@@ -34,6 +31,7 @@
       "passwordField": "password"
     },
     "oauth": {
+      "redirect": "http://host:port/login?",
       "defaults": {
         "prefix": "/api/oauth"
       },
