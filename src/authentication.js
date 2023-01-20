@@ -2,6 +2,7 @@
 import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication'
 import { LocalStrategy } from '@feathersjs/authentication-local'
 import { oauth, OAuthStrategy } from '@feathersjs/authentication-oauth'
+import { addApiPrefix } from './helpers/add-api-prefix.js'
 
 class GitHubStrategy extends OAuthStrategy {
   async getEntityData(profile, existing, params) {
@@ -35,6 +36,7 @@ class GoogleHubStrategy extends OAuthStrategy {
 }
 
 export const authentication = (app) => {
+  const servicePath = addApiPrefix(app, 'authentication')
   const authenticationInstance = new AuthenticationService(app)
 
   authenticationInstance.register('jwt', new JWTStrategy())
@@ -42,6 +44,6 @@ export const authentication = (app) => {
   authenticationInstance.register('github', new GitHubStrategy())
   authenticationInstance.register('google', new GoogleHubStrategy())
 
-  app.use('authentication', authenticationInstance)
+  app.use(servicePath, authenticationInstance)
   app.configure(oauth())
 }
