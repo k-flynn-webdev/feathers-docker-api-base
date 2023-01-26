@@ -3,6 +3,7 @@ import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication'
 import { LocalStrategy } from '@feathersjs/authentication-local'
 import { oauth, OAuthStrategy } from '@feathersjs/authentication-oauth'
 import { addApiPrefix } from './helpers/add-api-prefix.js'
+import { lastLogin } from './hooks/last-login.js'
 
 class GitHubStrategy extends OAuthStrategy {
   async getEntityData(profile, existing, params) {
@@ -46,4 +47,13 @@ export const authentication = (app) => {
 
   app.use(servicePath, authenticationInstance)
   app.configure(oauth())
+
+  // Get our initialized service so that we can register hooks
+  const service = app.service(servicePath)
+
+  service.hooks({
+    after: {
+      create: [lastLogin]
+    }
+  })
 }
