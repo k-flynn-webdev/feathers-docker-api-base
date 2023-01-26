@@ -20,6 +20,7 @@ export const userSchema = {
     googleId: { type: 'string', nullable: true },
     created_at: { type: 'string', format: 'date-time', nullable: true },
     updated_at: { type: 'string', format: 'date-time', nullable: true },
+    deleted_at: { type: 'string', format: 'date-time', nullable: true },
     last_login: { type: 'string', format: 'date-time', nullable: true }
   }
 }
