@@ -17,7 +17,8 @@ export const userSchema = {
     email: { type: 'string', nullable: true },
     password: { type: 'string' },
     githubId: { type: 'number', nullable: true },
-    googleId: { type: 'string', nullable: true }
+    googleId: { type: 'string', nullable: true },
+    last_login: { type: 'string', format: 'date-time', nullable: true }
   }
 }
 export const userResolver = resolve({})
