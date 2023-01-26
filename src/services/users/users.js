@@ -2,6 +2,7 @@
 import { authenticate } from '@feathersjs/authentication'
 import { hooks as schemaHooks } from '@feathersjs/schema'
 import { addApiPrefix } from '../../helpers/add-api-prefix.js'
+import { timeStamp } from '../../hooks/time-stamp.js'
 
 import {
   userDataValidator,
@@ -43,8 +44,16 @@ export const user = (app) => {
       all: [schemaHooks.validateQuery(userQueryValidator), schemaHooks.resolveQuery(userQueryResolver)],
       find: [],
       get: [],
-      create: [schemaHooks.validateData(userDataValidator), schemaHooks.resolveData(userDataResolver)],
-      patch: [schemaHooks.validateData(userPatchValidator), schemaHooks.resolveData(userPatchResolver)],
+      create: [
+        schemaHooks.validateData(userDataValidator),
+        schemaHooks.resolveData(userDataResolver),
+        timeStamp('created_at')
+      ],
+      patch: [
+        schemaHooks.validateData(userPatchValidator),
+        schemaHooks.resolveData(userPatchResolver),
+        timeStamp('updated_at')
+      ],
       remove: []
     },
     after: {
