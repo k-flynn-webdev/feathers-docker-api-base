@@ -8,4 +8,4 @@ pwd
 
 rm -rf ./public/*
 
-cp -R ../app-short-cal/dist/ ./public
+cp -R ../your-app-name/dist/ ./public
