@@ -1,6 +1,6 @@
 {
-  "name": "app-short-cal-api",
-  "description": "calendar sharing API",
+  "name": "your-app-name-api",
+  "description": "Your app description",
   "version": "0.0.0",
   "homepage": "",
   "private": true,

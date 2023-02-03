@@ -12,7 +12,9 @@
 - Postgres DB  
 - DB Admin Dashboard
 - NGINX reverse proxy
-
+    - Pre-setup for SPA
+        - Calls to `/api*` directed to NODE APP, 
+        - Else will return the `PUBLIC` files  e.g. `/`
 
 ## About
 
