@@ -2,9 +2,15 @@
 # feathers-docker-api-base
 
 ## Basic API to include features:
-- User API
 - Docker environment
-- DB Admin
+- User API
+    - Local signup [Email / Password]
+    - Social sign up [Google / Github]
+    - User last login (property: `last_login`)
+    - User last update (property: `updated_at`)
+    - User Safe delete (property: `delated_at`)
+- Postgres DB  
+- DB Admin Dashboard
 - NGINX reverse proxy
 
 
@@ -18,20 +24,20 @@ This project uses [Feathers](http://feathersjs.com). An open source framework fo
 2. Install your dependencies
 
     ```
-    cd path/to/app-short-cal-api
-    npm install
+    cd path/to/feathers-docker-api-base
+    yarn install
     ```
 
 3. Start your app
 
     ```
-    npm run migrate # Run migrations to set up the database
-    npm start
+    yarn run migrate
+    yarn run docker:dev
     ```
 
 ## Testing
 
-Run `npm test` and all your tests in the `test/` directory will be run.
+Run `yarn run test` and all your tests in the `test/` directory will be run.
 
 ## Scaffolding
 
